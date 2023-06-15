@@ -1,0 +1,18 @@
+---
+Name: approutes
+After: framework/_config/routes#coreroutes
+---
+SilverStripe\Control\Director:
+  rules:
+        # 'register' : 'RegisterPageController'
+
+        'dashboard': 'DashboardController'  
+
+---
+Before:
+  - '#login-forms'
+---
+SilverStripe\LoginForms\EnablerExtension:
+  login_themes:
+  - '$public'
+  - '$default'
