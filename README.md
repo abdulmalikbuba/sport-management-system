@@ -1,1 +1,1 @@
-# sport-management-system
+# sports-management-system
