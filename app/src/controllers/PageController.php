@@ -2,7 +2,11 @@
 
 namespace {
 
+use SilverStripe\Control\HTTPRequest;
+
     use SilverStripe\CMS\Controllers\ContentController;
+    use SilverStripe\Security\Security;
+    use SilverStripe\View\ArrayData;
     use SilverStripe\View\Requirements;
 
     class PageController extends ContentController
@@ -37,6 +41,53 @@ namespace {
             Requirements::css('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css');
             Requirements::javascript('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js');
 
+            // return $this->redirect("Security/login?BackURL=dashboard");
+
+        }
+
+        public function index(HTTPRequest $request)
+        {
+            return $this->redirect("Security/login?BackURL=dashboard");
+        }
+
+
+        public function setSessionMessage($message, $type = 'success')
+        {
+            $session = $this->getRequest()->getSession();
+            $session->set("Page.message", $message);
+            $session->set("Page.messageType", $type);
+        }
+
+        public function SessionMessage()
+        {
+
+            $session = $this->getRequest()->getSession();
+
+            $Message = $session->get('Page.message');
+            $Type = $session->get('Page.messageType');
+
+            $session->clear('Page.message');
+            $session->clear('Page.messageType');
+
+            if ($Message) {
+                return new ArrayData(compact('Message', 'Type'));
+            }
+
+            return false;
+        }
+
+        public function isUserAdmin()
+        {
+            $member = Security::getCurrentUser();
+
+            return $member->inGroup('administrators');
+        }
+
+        public function isUserMember()
+        {
+            $member = Security::getCurrentUser();
+
+            return $member->inGroup('users');
         }
     }
 }

@@ -1,8 +1,11 @@
-<div class="container text-center justify-content-center">
-	<article>
-		<h1>$Title</h1>
-		<div class="content">$Content</div>
-	</article>
-		$Form
-		$CommentsForm
+<div class="container mt-4 mb-4">
+  <div class="row">
+    <div class="col-md-8 ">
+      <div class=" me-4">
+	  	<h5>$Title</h5>
+        $Content
+        $Form
+      </div>
+    </div>
+  </div>
 </div>

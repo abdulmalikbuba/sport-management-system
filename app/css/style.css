@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Quicksand&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Manrope&family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope&family=Quicksand:wght@400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope&family=Quicksand:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:700');
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600'); */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
+
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Nunito';
 }
 
 .brand-wrapper {
@@ -20,7 +23,7 @@
 }
 
 .login-card {
-    border: none;
+    border: none !important;
     border-radius: 27.5px;
     box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
     overflow: hidden; 
@@ -207,4 +210,100 @@
     .page-content{
         margin-top: 10px;
     }
+}
+
+#EditProfileForm_editProfileForm_Surname_Holder,
+#EditProfileForm_editProfileForm_FirstName_Holder,
+#EditProfileForm_editProfileForm_Email_Holder,
+#EditProfileForm_editProfileForm_Gender_Holder,
+#EditProfileForm_editProfileForm_Telephonenumber_Holder,
+#EditProfileForm_editProfileForm_Address_Holder,
+#EditProfileForm_editProfileForm_DateOfBirth_Holder,
+#EditProfileForm_editProfileForm_ProfilePhoto_Holder{
+    border: none;
+}
+
+#EditProfileForm_editProfileForm_action_updateProfile{
+    margin-left: 10px;
+}
+
+#AthleteRegistrationForm_athleteRegistrationForm_Name_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_DateOfBirth_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_EmailAddress_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_Gender_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_Class_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_Program_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_TelephoneNumber_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_Address_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_SportsID_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_Height_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_Weight_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_House_Holder,
+#AthleteRegistrationForm_athleteRegistrationForm_Photo_Holder{
+    border: none;
+}
+
+#AthleteRegistrationForm_athleteRegistrationForm_action_save{
+    margin-left: 10px !important;
+}
+
+#AddTeacherForm_addTeacherForm_Surname_Holder,
+#AddTeacherForm_addTeacherForm_FirstName_Holder,
+#AddTeacherForm_addTeacherForm_Email_Holder,
+#AddTeacherForm_addTeacherForm_Gender_Holder,
+#AddTeacherForm_addTeacherForm_Telephonenumber_Holder,
+#AddTeacherForm_addTeacherForm_DateOfBirth_Holder,
+#AddTeacherForm_addTeacherForm_Address_Holder,
+#AddTeacherForm_addTeacherForm_ProfilePhoto_Holder,
+#AddTeacherForm_addTeacherForm_SportsID_Holder,
+#AddTeacherForm_addTeacherForm_Password_Holder{
+    border: none;
+}
+
+#Password_Password,
+#Password_ConfirmPassword{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#AddTeacherForm_addTeacherForm_action_save{
+    margin-left: 10px !important;
+}
+
+#AddEventsForm_eventForm_Title_Holder,
+#AddEventsForm_eventForm_Date_Holder,
+#AddEventsForm_eventForm_Venue_Holder{
+    border: none;
+}
+
+#AddEventsForm_eventForm_action_doCreateEvent{
+    margin-left: 10px !important;
+}
+
+#AddSportsForm_addSportsForm_Title_Holder{
+    border: none;
+}
+
+#AddSportsForm_addSportsForm_action_save{
+    margin-left: 10px !important;
+}
+
+.footer{
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }

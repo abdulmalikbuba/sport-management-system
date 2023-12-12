@@ -1,9 +1,7 @@
 <?php
 
-use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Forms\CompositeField;
-use SilverStripe\Forms\ConfirmedPasswordField;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\EmailField;
@@ -11,16 +9,21 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FileField;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Security\Member;
+use SilverStripe\Security\Security;
 
-class AddTeacherForm extends Form
+class EditProfileForm extends Form
 {
-    public function __construct($controller, $name)
+    public function __construct($controller, $name, $profile = null)
     {
+
         $fields = new FieldList([
             CompositeField::create(
+                HiddenField::create('ID'),
                 CompositeField::create(
                     TextField::create(
                         'Surname',
@@ -85,19 +88,12 @@ class AddTeacherForm extends Form
                 )->addExtraClass('col-lg-12 col-sm-12'),
 
 
-                CompositeField::create(
-                    ConfirmedPasswordField::create(
-                        'Password',
-                        'Password'
-                    )->addExtraClass('form-control')
-                )->addExtraClass('col-lg-12 col-sm-12'),
-
             )->addExtraClass('row'),
 
         ]);
 
         $actions = FieldList::create(
-            FormAction::create('save', 'Add Teacher')
+            FormAction::create('updateProfile', 'Update')
             ->setUseButtonTag(true)
             ->addExtraClass('btn btn-success')
         );
@@ -111,38 +107,34 @@ class AddTeacherForm extends Form
             'Email',
             'Gender',
             'Telephonenumber',
-            'Password',
+            'SportsID'
         );
 
         parent::__construct($controller, $name, $fields, $actions, $validator);
 
-    }
-
-    public function save($data, $form,  HTTPRequest $request)
-    {
-        $session = $request->getSession();
-
-        if (!empty($data['Email']))
+        if ($profile)
         {
-            $member = Member::get()->filter("Email", $data['Email'])->first();
-            if ($member)
-            {
-                $form->sessionMessage("Sorry, email is already in use..", 'error');
-                return $this->controller->redirect("dashboard/teachers/");
-            }
+            $this->loadDataFrom($profile);
         }
 
-        $member = new Member();
+        $this->loadDataFrom(Security::getCurrentUser());
 
-        $form->saveInto($member);
+    }
 
+    public function updateProfile($data, $form, HTTPRequest $request)
+    {
+        if (isset($data['ID']) && !empty($data['ID'])) {
+                $member = Member::get()->byID($data['ID']);
+            } else {
+                $member = new Member;
+            }
+    
+            $form->saveInto($member);
         $member->write();
         
-        $member->addToGroupByCode("Users");
-
-        $form->sessionMessage('Teacher has been added successfully!','good');
-
-        return $this->controller->redirect('dashboard/teachers/');
-            
+        $this->controller->setSessionMessage("Profile updated successfully.", 'good');
+        
+        return $this->controller->redirectBack();
     }
+  
 }

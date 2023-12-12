@@ -5,19 +5,19 @@
             <div class="page-wrapper">
 
                 <div class="page-title">
-                    <h5>$PageTitle</h5>
+                    <h5 class="text-uppercase">$PageTitle</h5>
                     <hr>
                 </div>
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <%-- <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fa-solid me-2 fa-plus"></i>Add Student / Athlete
-                </button>
+                </button> --%>
 
-                <p>View all athletes.</p>
+                <p>View all players / athletes</p>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <%-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+                </div> --%>
                 <% include AlertBar %>
 
                 <!-- table -->
@@ -72,6 +72,10 @@
                         <% end_loop %>
                     </tbody>
                 </table>
+
+                <a href="{$BaseHref}dashboard/sports/" class="text-decoration-none">
+                    <i class="fa-solid me-1 fa-arrow-left"></i>Go Back
+                </a>
             </div>
         </div>
         <% include DashboardFooter %>
